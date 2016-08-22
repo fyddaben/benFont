@@ -26,12 +26,12 @@ SRC_ENV=../products/**/*.tpl  node app.js
 - 还需要在`tpl`文件头部声明，使用字体，及`class`选择器名称，例如
 
 ```
-<input type="hidden" class='J_niufont' data-class='niu-font' value='syNormal'>
+<input type="hidden" class='J_benfont' data-class='ben-font' value='syNormal'>
 ```
 
 - `data-class`为选择器名称，可以自定义
 - `value`为字体名称，可以自行更改，但必须与`benFont`的`ttf`文件夹里面的字体名字保持一致(去掉`.ttf`后的名字)
-
+- ttf 字体文件，请自行百度下载所需字体文件。
 - 在`scss`文件中声明
 
 ```
@@ -49,7 +49,7 @@ SRC_ENV=../products/**/*.tpl  node app.js
 @font-face {
     @include fontBlock('index', 'DINOffcPro-Cond');
 }
-.niu-num-font{
+.num-font{
     font-family: 'DINOffcPro-CondBold';
 }
 ```
