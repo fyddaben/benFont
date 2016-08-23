@@ -8,22 +8,22 @@
 - 支持选择器，过滤生成特定字体
 
 ### 安装
-
+> 在package.json中，添加benfont
 ```
-git clone https://github.com/fyddaben/benFont.git 
-cd benFont 
 npm install
 ```
-## 运行命令
+## 引入 
 ```
-SRC_ENV=../products/**/*.tpl  node app.js
+var benfont = require('benfont');
+benfont.watch('../product/**/*.tpl');
 ```
-`SRC_ENV` 变量可以针对不同的项目进行改变监听路径, 可以是相对或者绝对路径
+监听路径, 可以是相对或者绝对路径
 
 ### 使用
 
 - 例如上面例子，是针对`../product/`下面的任意`tpl`文件，不限层级
 - 还需要在`tpl`文件头部声明，使用字体，及`class`选择器名称，例如
+- 在模板中，添加下面的标记后，就能在模板对应的路径，生成`font`文件夹，放置字体文件
 
 ```
 <input type="hidden" class='J_benfont' data-class='ben-font' value='syNormal'>
