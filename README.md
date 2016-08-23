@@ -1,6 +1,7 @@
 # benFont
 
-> 可以针对不同的项目，字体生成使用
+> 基于[fontmin](http://www.npmjs.com/package/fontmin)可以针对不同的项目，字体生成使用
+
 
 ### 特点
 
