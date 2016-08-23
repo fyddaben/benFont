@@ -1,7 +1,7 @@
 {
   "name": "benfont",
-  "version": "0.0.6",
-  "description": "Generate font file ",
+  "version": "0.0.7",
+  "description": "根据页面，提取并生成字体",
   "main": "app.js",
   "dependencies": {
     "chokidar": "1.4.3",

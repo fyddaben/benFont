@@ -5,7 +5,7 @@
 
 ### 特点
 
-- 支持同个页面多个字体
+- 支持同个页面使用多个字体
 - 支持选择器，过滤生成特定字体
 
 ### 安装
@@ -20,23 +20,20 @@ npm install
 
 ```
 var benfont = require('benfont');
-benfont.watch('../product/**/*.tpl');
+benfont.watch('../product/**/*.tpl', '../font/');
 ```
-监听路径, 可以是相对或者绝对路径
+- 例如上面例子，是针对`../product/`下面的任意`tpl`文件，不限层级
+- `../font/` 表示存放字体文件的文件夹,即源文件夹，可以自行百度字体ttf文件下载
 
 ### 使用
-
-- 例如上面例子，是针对`../product/`下面的任意`tpl`文件，不限层级
 - 还需要在`tpl`文件头部声明，使用字体，及`class`选择器名称，例如
 - 在模板中，添加下面的标记后，就能在模板对应的路径，生成`font`文件夹，放置字体文件
 
 ```
 <input type="hidden" class='J_benfont' data-class='ben-font' value='syNormal'>
 ```
-
-- `data-class`为选择器名称，可以自定义
-- `value`为字体名称，可以自行更改，但必须与`benFont`的`ttf`文件夹里面的字体名字保持一致(去掉`.ttf`后的名字)
-- ttf 字体文件，请自行百度下载所需字体文件。
+- `data-class`为选择器名称，可以自定义,即需要提取的字体容器的class
+- `value`为字体名称，可以自行更改，但必须与，字体文件夹里面的字体名字保持一致(去掉`.ttf`后的名字)
 - 在`scss`文件中声明
 
 ```

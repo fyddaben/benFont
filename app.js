@@ -1,4 +1,4 @@
-var fontSrc = __dirname + '/ttf/';
+var fontSrc = '';
 var fileSrc = '';
 var chokidar = require('chokidar');
 var Fontmin = require('fontmin');
@@ -15,15 +15,13 @@ log4js.addAppender(log4js.appenders.file('logs/benfont.log'), 'shaobing');
 
 var logger = log4js.getLogger('shaobing');
 
-
-
-
 var changeCallback = function(path) {
     logger.info(path, ' change or add');
     checkFontExist(path);
 }
-var watchExe = function(src) {
+var watchExe = function(src, fontSrc) {
     fileSrc = src;
+    fontSrc = fontSrc;
 
     // 初始化监听器
     var watcher = chokidar.watch(fileSrc, {
