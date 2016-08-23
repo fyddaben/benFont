@@ -1,5 +1,5 @@
-var fontSrc = './ttf/';
-var fileSrc = process.env.SRC_ENV;
+var fontSrc = __dirname + '/ttf/';
+var fileSrc = '';
 var chokidar = require('chokidar');
 var Fontmin = require('fontmin');
 var jsdom = require('jsdom');
@@ -7,6 +7,7 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 var log4js = require('log4js');
 var rename = require('gulp-rename');
+var curDir = __dirname;
 
 log4js.loadAppender('file');
 
@@ -14,21 +15,25 @@ log4js.addAppender(log4js.appenders.file('logs/benfont.log'), 'shaobing');
 
 var logger = log4js.getLogger('shaobing');
 
-// 初始化监听器
-var watcher = chokidar.watch(fileSrc, {
-    persistent: true,
-    ignoreInitial: true
-});
+
 
 
 var changeCallback = function(path) {
     logger.info(path, ' change or add');
     checkFontExist(path);
 }
+var watchExe = function(src) {
+    fileSrc = src;
 
-watcher.on('add', changeCallback).on('change', changeCallback);
+    // 初始化监听器
+    var watcher = chokidar.watch(fileSrc, {
+        persistent: true,
+        ignoreInitial: true
+    });
+    watcher.on('add', changeCallback).on('change', changeCallback);
+}
 
-console.log('Start watch tpl change ');
+exports.watch = watchExe;
 
 // 判断font文件夹是否存在
 var checkFontExist = function(path) {
@@ -67,7 +72,7 @@ var checkFontExist = function(path) {
  */
 var readFileAndFilter = function(filePath, url, fileName) {
     var data = fs.readFileSync(filePath, 'utf-8');
-    var jquery = fs.readFileSync("./jquery.js", "utf-8");
+    var jquery = fs.readFileSync(curDir + "/jquery.js", "utf-8");
     jsdom.env({
         html: data,
         src:[jquery],

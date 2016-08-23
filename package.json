@@ -1,7 +1,7 @@
 {
   "name": "benfont",
-  "version": "0.0.3",
-  "description": "generate font file ",
+  "version": "0.0.4",
+  "description": "Generate font file ",
   "main": "app.js",
   "dependencies": {
     "chokidar": "1.4.3",
