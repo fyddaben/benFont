@@ -9,11 +9,15 @@
 - 支持选择器，过滤生成特定字体
 
 ### 安装
+
 > 在package.json中，添加benfont
+
 ```
 npm install
 ```
+
 ## 引入 
+
 ```
 var benfont = require('benfont');
 benfont.watch('../product/**/*.tpl');
