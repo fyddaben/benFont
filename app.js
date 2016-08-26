@@ -11,7 +11,7 @@ var curDir = __dirname;
 
 log4js.loadAppender('file');
 
-log4js.addAppender(log4js.appenders.file('logs/benfont.log'), 'shaobing');
+log4js.addAppender(log4js.appenders.file(curDir + '/logs/benfont.log'), 'shaobing');
 
 var logger = log4js.getLogger('shaobing');
 
@@ -19,9 +19,10 @@ var changeCallback = function(path) {
     logger.info(path, ' change or add');
     checkFontExist(path);
 }
-var watchExe = function(src, fontSrc) {
+var watchExe = function(src, fontrc) {
     fileSrc = src;
-    fontSrc = fontSrc;
+    fontSrc = fontrc;
+
 
     // 初始化监听器
     var watcher = chokidar.watch(fileSrc, {
@@ -71,6 +72,7 @@ var checkFontExist = function(path) {
 var readFileAndFilter = function(filePath, url, fileName) {
     var data = fs.readFileSync(filePath, 'utf-8');
     var jquery = fs.readFileSync(curDir + "/jquery.js", "utf-8");
+
     jsdom.env({
         html: data,
         src:[jquery],
@@ -104,7 +106,7 @@ var readFileAndFilter = function(filePath, url, fileName) {
 
                     // 重命名字体名字
                     var reFontName = fileName + '_' + _this.val();
-                    var fontpath = fontSrc + _this.val() + '.ttf';
+                    var fontpath = fontSrc + '/' + _this.val() + '.ttf';
                     fontGen(fontpath, content, url, reFontName);
                 }
             });

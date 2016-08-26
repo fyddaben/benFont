@@ -1,6 +1,6 @@
 {
   "name": "benfont",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "根据页面，提取并生成字体",
   "main": "app.js",
   "dependencies": {
