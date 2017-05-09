@@ -24,6 +24,7 @@ benfont.watch('../product/**/*.tpl', '../font/');
 ```
 - 例如上面例子，是针对`../product/`下面的任意`tpl`文件，不限层级
 - `../font/` 表示存放字体文件的文件夹,即源文件夹，可以自行百度字体ttf文件下载
+- `tpl`文件一旦修改，会在同等目录下生成一个`font`文件夹，里面放置所有需要的字体文件
 
 ### 使用
 - 还需要在`tpl`文件头部声明，使用字体，及`class`选择器名称，例如
@@ -32,8 +33,9 @@ benfont.watch('../product/**/*.tpl', '../font/');
 ```
 <input type="hidden" class='J_benfont' data-class='ben-font' value='syNormal'>
 ```
-- `data-class`为选择器名称，可以自定义,即需要提取的字体容器的class
+- `data-class`为选择器名称，可以自定义,即需要`提取的字`的容器的class
 - `value`为字体名称，可以自行更改，但必须与，字体文件夹里面的字体名字保持一致(去掉`.ttf`后的名字)
+- `class`不能修改。
 - 在`scss`文件中声明
 
 ```
