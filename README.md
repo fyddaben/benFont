@@ -53,7 +53,7 @@ benfont.watch('../product/**/*.tpl', '../font/');
 @font-face {
     @include fontBlock('index', 'DINOffcPro-Cond');
 }
-.num-font{
+.ben-font{
     font-family: 'DINOffcPro-CondBold';
 }
 ```
