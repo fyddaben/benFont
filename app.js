@@ -3,6 +3,7 @@ var fileSrc = '';
 var chokidar = require('chokidar');
 var Fontmin = require('fontmin');
 var jsdom = require('jsdom');
+var jquery = require('jquery');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var log4js = require('log4js');
@@ -71,17 +72,19 @@ var checkFontExist = function(path) {
  */
 var readFileAndFilter = function(filePath, url, fileName) {
     var data = fs.readFileSync(filePath, 'utf-8');
-    var jquery = fs.readFileSync(curDir + "/jquery.js", "utf-8");
 
-    jsdom.env({
-        html: data,
-        src:[jquery],
-        done: function(errors, window) {
-            if (errors) {
-                logger.error('读取文件错误');
-                logger.error(errors);
-            }
-            var $= window.$;
+    var document = new jsdom.JSDOM(data, {});
+    var $ = jquery(document.window);
+
+    //jsdom.env({
+    //    html: data,
+    //    src:[jquery],
+    //    done: function(errors, window) {
+    //        if (errors) {
+    //            logger.error('读取文件错误');
+    //            logger.error(errors);
+    //        }
+            //var $= window.$;
 
             var fontObj = $('.J_benfont')
             var fontSpecs = fontObj.length;
@@ -111,8 +114,8 @@ var readFileAndFilter = function(filePath, url, fileName) {
                 }
             });
 
-        }
-    });
+       // }
+    //});
 }
 
 /**
